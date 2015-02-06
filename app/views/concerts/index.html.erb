@@ -1,0 +1,9 @@
+<div class="later_this_month">
+  <h1>Concerts in <%= @city_name %>
+  </h1>
+  <ul>
+    <% @concerts.each do |concert| %>
+      <%= render partial: 'shared/concert_list', locals: {concert: concert} %>
+    <% end %>
+  </ul>
+</div>

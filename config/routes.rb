@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # to create a controller -> rails g controller site
 
   get '/' => 'site#home'
+  get '/concerts_by_city/:name' => 'concerts#concerts_by_city', as: 'concerts_by_city'
   resources :concerts do
     resources :comments
   end

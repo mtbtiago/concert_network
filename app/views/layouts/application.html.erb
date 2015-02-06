@@ -30,7 +30,7 @@
       <ul class="cities_list">
         <% Concert.cities_with_concerts.each do |city| %>
           <li>
-            <a href="#"><%= "#{city[0]} (#{city[1]})" %></a>
+            <%= link_to("#{city[0]} (#{city[1]})", concerts_by_city_path(city[0])) %>
           </li>
         <% end %>
       </ul>
