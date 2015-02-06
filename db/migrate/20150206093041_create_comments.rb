@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.column  :concert_id,    :integer, null: false
       t.column  :author,        :string, null: false
       t.column  :when,          :datetime, null: false
-      t.column  :text,          :string, null: false
+      t.column  :comment,       :text, null: false
 
       t.timestamps null: false
     end
