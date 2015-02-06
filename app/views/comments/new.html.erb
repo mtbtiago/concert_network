@@ -1,0 +1,21 @@
+<h2>New comment for <%=link_to(@concert.band,concert_path(@concert))%>
+</h2>
+
+<% if @comment.errors.any? %>
+  <ul>
+    <% @comment.errors.full_messages.each do |error_msg| %>
+    <li><%= error_msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@concert, @comment] do |f| %>
+  <%= f.label :author %>
+  <%= f.text_field :author, size: 16 %>
+  <br>
+  <%= f.label :comment %>
+  <%= f.text_field :comment, size: 64 %>
+  <br>
+  <%= f.submit 'Save' %>
+  <%= link_to("Cancel",concert_path(@concert)) %>
+<% end %>

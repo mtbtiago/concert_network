@@ -1,0 +1,3 @@
+<h2>Comments for <%=link_to(@concert.band,concert_path(@concert))%></h2>
+
+<%= render partial: 'shared/comment_list', locals: {concert: @concert, comments: @concert.comments} %>

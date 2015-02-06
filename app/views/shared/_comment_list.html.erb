@@ -1,0 +1,14 @@
+<% if comments.empty? %>
+  <%= "No comments yet" %>
+<% else %>
+  <ul>
+    <% comments.each do |comment| %>
+      <li>
+        <%= "#{comment.author} said on #{comment.when}:" %>
+        <p>
+          <%= comment.comment %>
+        </p>
+      </li>
+    <%end%>
+  </ul>
+<%end%>

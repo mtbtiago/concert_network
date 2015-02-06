@@ -1,0 +1,12 @@
+  <div class="concert_band">
+    <%= link_to(concert.band,concert_path(concert)) %>
+  </div>
+  <div class="concert_description">
+    <%= concert.description %>
+  </div>
+  <div class="concert_more_info">
+    <%= concert.more_info %>
+  </div>
+  <div class="concert_price">
+    <%="Price: #{concert.price}" %>
+  </div>

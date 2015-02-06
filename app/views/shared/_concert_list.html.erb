@@ -1,0 +1,7 @@
+<li>
+  <%= render partial: 'shared/concert_info', locals: {concert: concert} %>
+  <div class="comments_count">
+    <%=link_to("Has #{concert.comments.count} comments",concert_comments_path(concert)) %>
+  </div>
+  <%= link_to("Add your comment",new_concert_comment_path(concert)) %>
+</li>

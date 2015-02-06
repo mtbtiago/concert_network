@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ConcertNetwork</title>
+  <title>Music Concert Network</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1><%= link_to("Music Concert Network",'/')%></h1>
+    
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+
+    <form class="search_box" action="">
+      Search by price
+      <input type="text" name="search_by_price" value="">
+      <input type="submit" value="Search">
+    </form>
+    <div class="new_item button_actions"><%= link_to("Create concert",new_concert_path) %>
+    </div>
+  </header>
 
 <%= yield %>
+
+  <footer>
+    <h4>
+      <ul class="cities_list">
+        <% Concert.cities_with_concerts.each do |city| %>
+          <li>
+            <a href="#"><%= "#{city[0]} (#{city[1]})" %></a>
+          </li>
+        <% end %>
+      </ul>
+    </h4>
+  </footer>
 
 </body>
 </html>
