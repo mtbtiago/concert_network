@@ -2,39 +2,53 @@
 <html>
 <head>
   <title>Music Concert Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <h1><%= link_to("Music Concert Network",'/')%></h1>
-    
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
 
-    <form class="search_box" action="">
-      Search by price
-      <input type="text" name="search_by_price" value="">
-      <input type="submit" value="Search">
-    </form>
-    <div class="new_item button_actions"><%= link_to("Create concert",new_concert_path) %>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="<%=url_for('/')%>" class="navbar-brand">Music Concert Network</a>
+        <form action="./" class="navbar-form navbar-left">
+          <div class="input-group">
+            <span class="input-group-addon">€</span>
+            <input type="text" class="form-control" placeholder="Search concerts by price">
+            <span class="input-group-addon">.00</span>
+          </div>
+          <button class="btn btn-info">Max price</button>
+        </form>
+      </div>
+        <p class="navbar-right">
+          <a href="<%=url_for(new_concert_path)%>" class="btn btn-danger">Create new concert</a>
+        </p>
     </div>
-  </header>
-
+  </nav>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+      
 <%= yield %>
 
   <footer>
-    <h4>
-      <ul class="cities_list">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <p class="navbar-text">Concerts by city</p>
         <% Concert.cities_with_concerts.each do |city| %>
-          <li>
-            <%= link_to("#{city[0]} (#{city[1]})", concerts_by_city_path(city[0])) %>
-          </li>
+          <a href="<%=url_for(concerts_by_city_path(city[0]))%>" class="btn btn-primary"><%="#{city[0]} (#{city[1]})"%></a>
         <% end %>
-      </ul>
-    </h4>
+      </div>
+    </nav>
   </footer>
 
 </body>

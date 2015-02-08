@@ -41,7 +41,7 @@ class Concert < ActiveRecord::Base
     # Date.today.advance({days: 30}) #-> Date
     # 30.day.from_now # -> DateTime
     Concert.where(
-      date: (Date.today..Date.today.advance({days: 30}))).
+      date: (Date.tomorrow..Date.today.advance({days: 30}))).
       order("date")
   end
 

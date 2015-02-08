@@ -1,16 +1,24 @@
-<div class="later_this_month">
-  <h1>Later this month</h1>
-  <ul>
-    <% Concert.next_concerts.each do |concert| %>
-      <%= render partial: 'shared/concert_list', locals: {concert: concert} %>
-    <% end %>
-  </ul>
-</div>
-<div class="today">
-  <h1>Today</h1>
-  <ul>
-    <% Concert.concerts_today.each do |concert| %>
-      <%= render partial: 'shared/concert_list', locals: {concert: concert} %>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class="row">
+    <aside id="" class="col-md-3">
+      <div class="later_this_month">
+        <h1>Later this month</h1>
+        <ul>
+          <% Concert.next_concerts.each do |concert| %>
+            <%= render partial: 'shared/concert_list', locals: {concert: concert} %>
+          <% end %>
+        </ul>
+      </div>
+    </aside>
+
+    
+    <article id="today" class="col-md-9">
+      <h1>Today</h1>
+      <ul>
+        <% Concert.concerts_today.each do |concert| %>
+          <%= render partial: 'shared/concert_list', locals: {concert: concert} %>
+        <% end %>
+      </ul>
+    </article>
+  </div>
 </div>
